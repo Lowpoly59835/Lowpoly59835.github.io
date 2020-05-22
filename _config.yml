@@ -1,6 +1,7 @@
 # Site settings
 title:          Lowpoly
 description:    "Lowpoly Blog"
+baseurl:
 url:            "https://lowpoly59835.github.io/"
 
 # Google Analytics
