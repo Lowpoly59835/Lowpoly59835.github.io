@@ -56,9 +56,15 @@ windbg를 로컬 커널 모드로 실행시키는 방법은 두 가지가 있다
 
 
 
-SOS.dll 확장 모듈을 버전 별로 구하는 방법 (https://www.sysnet.pe.kr/2/0/1654)  
-windbg ".loadby sos" 명령어 (https://www.sysnet.pe.kr/2/0/943)  
-Failed to find runtime DLL (mscorwks.dll), 0x80004005 (https://www.sysnet.pe.kr/Default.aspx?mode=2&sub=0&detail=1&pageno=0&wid=1020&rssMode=1&wtype=0)  
-Windbg - Local Kernel Debug 모드 (https://www.sysnet.pe.kr/2/0/934)  
-windbg - 닷넷 메모리 덤프에서 전역 객체의 내용을 조사하는 방법(https://www.sysnet.pe.kr/2/0/11460)   
-Setting Up Local Kernel Debugging of a Single Computer Manually(https://docs.microsoft.com/ko-kr/windows-hardware/drivers/debugger/setting-up-local-kernel-debugging-of-a-single-computer-manually)
+SOS.dll 확장 모듈을 버전 별로 구하는 방법 
+(https://www.sysnet.pe.kr/2/0/1654)    
+windbg ".loadby sos" 명령어 
+(https://www.sysnet.pe.kr/2/0/943)    
+Failed to find runtime DLL (mscorwks.dll), 0x80004005
+(https://www.sysnet.pe.kr/Default.aspx?mode=2&sub=0&detail=1&pageno=0&wid=1020&rssMode=1&wtype=0)  
+Windbg - Local Kernel Debug 모드 
+(https://www.sysnet.pe.kr/2/0/934)  
+windbg - 닷넷 메모리 덤프에서 전역 객체의 내용을 조사하는 방법
+(https://www.sysnet.pe.kr/2/0/11460)   
+Setting Up Local Kernel Debugging of a Single Computer Manually
+(https://docs.microsoft.com/ko-kr/windows-hardware/drivers/debugger/setting-up-local-kernel-debugging-of-a-single-computer-manually)
