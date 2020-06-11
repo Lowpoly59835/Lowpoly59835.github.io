@@ -128,4 +128,6 @@ Lambdas are a great language feature, but use them with caution.
 ----------------------
 
 이 내용에 관해서 간단한 예제와 함께 IL DASM을 통해 확인하는 글을 쓸 예정  
-어느정도 이 내용을 기반으로 하고있기에 
+어느정도 이 내용을 기반으로 하고있기에 거창하게 쓰지는 않을 예정
+
+
