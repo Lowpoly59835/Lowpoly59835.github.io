@@ -69,11 +69,11 @@ Leaky lambda expressions in practice
 Here we have a (slightly contrived) method with two lambda expressions.
 여기 우리는 두 개의 람다 표현식을 포함한 함수를 가지고 있다.
 
-The first of them refers to a large byte array. It calculates the size of this array so we can write it to the console. We’d expect this to be cleaned up after the method returns.  
-람다 표현식의 첫 번째(bigThingCount)는 큰 바이트 배열을 참조한다. 배열의 크기를 계산하고 콘솔에 출력한다. 우리는 함수를 리턴한 후에 이것은 청소된다고 예상한다.
-The other only closes over an integer, and is totally unrelated to the first. We return this lambda to the caller.
-다른 하나는 integer(X)만을 닫고, 첫번쨰와 전혀 관련이 없다. 우리는 호출차에게 람다를 반환한다.
-Let’s take a look and see how this second expression keeps the large byte array alive.
+The first of them refers to a large byte array. It calculates the size of this array so we can write it to the console. We’d expect this to be cleaned up after the method returns.   
+람다 표현식의 첫 번째(bigThingCount)는 큰 바이트 배열을 참조한다. 배열의 크기를 계산하고 콘솔에 출력한다. 우리는 함수를 리턴한 후에 이것은 청소된다고 예상한다.  
+The other only closes over an integer, and is totally unrelated to the first. We return this lambda to the caller.  
+다른 하나는 integer(X)만을 닫고, 첫번쨰와 전혀 관련이 없다. 우리는 호출차에게 람다를 반환한다.  
+Let’s take a look and see how this second expression keeps the large byte array alive.  
 어떻게 두 번째 표현식이 가장 큰 바이트 배열을 유지하는지를 살펴보자.
 
 This is what the compiler generates for this class:
@@ -111,18 +111,18 @@ This is what the compiler generates for this class:
         }
     }
     
-Firstly, you can see that the compiler has generated a new class for us, named <>c_DisplayClass0_0. We can also see that both local variables (bigThing and smallThing) have been hoisted to become members of this common class.
+Firstly, you can see that the compiler has generated a new class for us, named <>c_DisplayClass0_0. We can also see that both local variables (bigThing and smallThing) have been hoisted to become members of this common class.  
 우선적으로, 당신은 컴파일러가 우리를 위해 <>c_DisplayClass0_0라고 이름붙은 새로운 클래스를 생산하는 것을 볼 수 있다. 또한 우리는 로컬 변수또한 이 클래스의 멤버가 되어있는 것을 볼 수 있다.
 
-The re-written Add1() method sets these properties, rather than creating local variables.
+The re-written Add1() method sets these properties, rather than creating local variables.  
 재작성한 Add1() 함수는 로컬변수를 만드는 대신에 이러한 속성들을 설정한다.
 
-It then returns a function that refers to the method in our new class, therefore keeping everything alive until this returned function is collected.
+It then returns a function that refers to the method in our new class, therefore keeping everything alive until this returned function is collected.  
 이것은 우리의 새로운 클래스에서 함수를 참조하는 함수를 반환하고, 그것들은 리턴된 함수가 수집될때까지 모든 것이 살아있게 유지한다.
 
 Lambdas are a great language feature, but use them with caution.
 
-람다는 훌륭한 기능이지만, 주의해서 사용해야한다.
+람다는 훌륭한 기능이지만, 주의해서 사용해야한다.  
 
 ----------------------
 
