@@ -66,7 +66,7 @@ Leaky lambda expressions in practice
         }  
     }  
 
-Here we have a (slightly contrived) method with two lambda expressions.
+Here we have a (slightly contrived) method with two lambda expressions.  
 여기 우리는 두 개의 람다 표현식을 포함한 함수를 가지고 있다.
 
 The first of them refers to a large byte array. It calculates the size of this array so we can write it to the console. We’d expect this to be cleaned up after the method returns.   
