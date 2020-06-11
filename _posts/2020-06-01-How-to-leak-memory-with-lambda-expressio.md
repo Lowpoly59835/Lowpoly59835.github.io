@@ -1,3 +1,7 @@
+[원본](http://www.davejsaunders.com/2017/05/06/memory-leak-lambdas.html)
+포스팅을 번역했음
+의역이나 오역이 있을 수 있음
+
 How to leak memory with lambda expressions
 Originally posted in May 2017
 
@@ -100,14 +104,19 @@ public class MyClass
     }
 }
 Firstly, you can see that the compiler has generated a new class for us, named <>c_DisplayClass0_0. We can also see that both local variables (bigThing and smallThing) have been hoisted to become members of this common class.
+우선적으로, 당신은 컴파일러가 우리를 위해 <>c_DisplayClass0_0라고 이름붙은 새로운 클래스를 생산하는 것을 볼 수 있다. 또한 우리는 로컬 변수또한 이 클래스의 멤버가 되어있는 것을 볼 수 있다.
 
 The re-written Add1() method sets these properties, rather than creating local variables.
+재작성한 Add1() 함수는 로컬변수를 만드는 대신에 이러한 속성들을 설정한다.
 
 It then returns a function that refers to the method in our new class, therefore keeping everything alive until this returned function is collected.
+이것은 우리의 새로운 클래스에서 함수를 참조하는 함수를 반환하고, 그것들은 리턴된 함수가 수집될때까지 모든 것이 살아있게 유지한다.
 
 Lambdas are a great language feature, but use them with caution.
 
-If you want to find out more about how lambdas work in C#, check out:
+람다는 훌륭한 기능이지만, 주의해서 사용해야한다.
 
-A post on this subject by Eric Lippert
-A good article on C# closured from CodeThinked
+----------------------
+
+이 내용에 관해서 간단한 예제와 함께 IL DASM을 통해 확인하는 글을 쓸 예정
+어느정도 이 내용을 기반으로 하고있기에 
