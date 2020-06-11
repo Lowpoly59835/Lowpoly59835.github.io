@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "개인공부 시스템 프로그래밍"
-author: "Chester"
+author: "로우폴리"
 comments: false
 ---
 
