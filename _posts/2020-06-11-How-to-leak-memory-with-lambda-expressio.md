@@ -44,11 +44,11 @@ Because of that, the compiler has to keep it all on the heap. It does this by cr
 
 Your original code is then re-written to call this new method, safe in the knowledge that the the variables it uses will be there - kept alive in the new class.
 
-당신의 오리지널 코드는 새로운 함수를 호출하게 재작성하고, 사용하는 변수가 존재한다는 것을 알고 안전하게 새 클래스에 유지한다.
+당신의 오리지널 코드는 새로운 함수를 호출하게 재작성하고, 사용하는 변수가 존재한다는 것을 알고 안전하게 새 클래스에 유지한다.  
 
-Here’s the catch though - if you use multiple lambda expressions in the same method, they are created as methods in the same comiler generated class. That means that every variable used in those expressions will stay alive until that class can be disposed.
-여기서 캐치해야할 것 - 만약 당신이 같은 함수에서 여러 람다 표현식을 사용한다면, 같은 클래스에서 다른 함수가 만들어진다.
-Let’s look at an example..
+Here’s the catch though - if you use multiple lambda expressions in the same method, they are created as methods in the same comiler generated class. That means that every variable used in those expressions will stay alive until that class can be disposed.  
+여기서 캐치해야할 것 - 만약 당신이 같은 함수에서 여러 람다 표현식을 사용한다면, 같은 클래스에서 다른 함수가 만들어진다.  
+Let’s look at an example..  
 예제를 보자.
 
 Leaky lambda expressions in practice  
@@ -73,7 +73,7 @@ The first of them refers to a large byte array. It calculates the size of this a
 람다 표현식의 첫 번째(bigThingCount)는 큰 바이트 배열을 참조한다. 배열의 크기를 계산하고 콘솔에 출력한다. 우리는 함수를 리턴한 후에 이것은 청소된다고 예상한다.  
 The other only closes over an integer, and is totally unrelated to the first. We return this lambda to the caller.  
 다른 하나는 integer(X)만을 닫고, 첫번쨰와 전혀 관련이 없다. 우리는 호출차에게 람다를 반환한다.  
-Let’s take a look and see how this second expression keeps the large byte array alive.  
+Let’s take a look and see how this second expression keeps the large byte array alive.    
 어떻게 두 번째 표현식이 가장 큰 바이트 배열을 유지하는지를 살펴보자.
 
 This is what the compiler generates for this class:
