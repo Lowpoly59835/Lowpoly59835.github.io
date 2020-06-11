@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How to leak memory with lambda expressio"
-author: "Chester"
+author: "로우폴리"
 comments: false
 ---
 
