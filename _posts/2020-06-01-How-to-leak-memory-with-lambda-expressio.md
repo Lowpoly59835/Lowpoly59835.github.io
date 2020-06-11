@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "How to leak memory with lambda expressio"
+author: "Chester"
+comments: false
+---
+
 [원본](http://www.davejsaunders.com/2017/05/06/memory-leak-lambdas.html)
 포스팅을 번역했음
 의역이나 오역이 있을 수 있음
