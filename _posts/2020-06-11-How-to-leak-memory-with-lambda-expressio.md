@@ -9,12 +9,11 @@ comments: false
 포스팅을 번역했음
 의역이나 오역이 있을 수 있음
 
-How to leak memory with lambda expressions  
-Originally posted in May 2017  
+# How to leak memory with lambda expressions  
 
 Lambda expressions are a great feature of C#, but it’s also quite easy to accidentally ‘leak’ memory when using them.  
 
-람다 표현식은 C#의 훌륭한 기능이지만, 이것을 사용할 때에 메모리 릭이 또한 우연히 발생한다.
+람다 표현식은 C#의 훌륭한 기능이지만, 쉽게 사용하면 메모리 릭이 발생할 수 있다.
 
 When a lambda expression references a local variable, that expression (and the local variables it references) end up on the heap. If you use multiple lambda expressions within the same scope (a method, for example), all of them (and the multiple variables they reference) will have the same lifetime.  
 
@@ -22,25 +21,27 @@ When a lambda expression references a local variable, that expression (and the l
 
 In other words; that lambda expression that references the huge array, but is only used in the scope of the method, won’t be disposed when the method returns like you expect.. it will hang around until the last lambda created in that method is collected.  
 
-다른 말로, 람다 표현식이 거대한 배열을 참조하지만, 이것은 함수의 스코프안에서만 사용된다. 당신이 예상하는 것처럼 함수가 리턴 될 때에 해제되지 않는다..이것은 함수에서 마지막으로 만들어진 람다가 해제될 때까지 유지될 것이다.  
+다른 말로, 오로지 함수의 스코프안에서 사용되는 거대한 배열을 참조하는 람다 표현식은 함수가 리턴될 때에 해제되지 않는다.. 이것은 함수에서 마지막으로 만들어진 람다가 수집될 때까지 유지될 것이다.  
 
-Why your local variable is heap-allocated  
-왜 당신의 로컬 변수가 힙에 할당되는가.  
+
+## Why your local variable is heap-allocated  
+왜 당신의 로컬 변수가 힙에 할당되는가. 
+
 Lambda expressions don’t actually exist in the CLR, they are compiler magic, so we have to do something with them in order for the runtime to understand them.  
-람다 표현식은 컴파일러의 마법으로 CLR에서 존재하지 않는다, 그래서 우리는 런타임과 함께 이해해야한다.  
+람다 표현식은 컴파일러의 마법으로 CLR에서 존재하지 않는다, 그래서 우리는 런타임 명령에서 이해해야한다.  
 If your expression doesn’t refer to any local variables, the compiler can create a static method and rewrite your code to call that instead.  
-만약 표현식이 어떤 로컬 변수를 참조하지 않는다면, 컴파일러는 전역 함수를 만들고 당신의 코드를 대신 호출한다.  
+만약 표현식이 어떤 로컬 변수를 참조하지 않는다면, 컴파일러는 전역 함수를 만들고 그 함수를 대신 호출한다.  
 If you reference a local variable though, things are a little more complicated..  
 만약 로컬 변수를 참조한다면, 조금 복잡해진다.
 
 When you create a lambda expression, it’s perfectly possible that it could outlive the stack-frame. For example; it could be returned from the method or allocated to a member variable somewhere. That’s no good when you use a local variable in that lambda, because that variable might no longer exist when the lambda is used later.
 
-람다 표현식을 생성할 때에, 이것은 스택 프레임보다 더 오래 생존하는게 가능하다. 예를들어, 함수가 리턴되거나 어떤 장소에 멤버 변수를 할당된다고 치자. 그것은 람다안에서 로컬 변수를 사용하기 좋지 않다, 왜냐면 변수는 나중에 람다를 사용할 때보다 더 오래 존재하지 않을 수도 있기때문이다.
+람다 표현식을 생성할 때에, 이것은 스택 프레임보다 더 오래 생존하는게 가능하다. 예를들어, 함수가 리턴되거나 어떤 장소에 멤버 변수에 할당된다고 치자. 그것은 람다에서 로컬 변수를 사용하기 좋지 않다, 왜냐면 변수는 람다 함수를 호출할 때에 존재하지 않을 수도 있기때문이다.
 
 
 Because of that, the compiler has to keep it all on the heap. It does this by creating a new class with a method containing the contents of your lambda expression. The variables referenced in your expression become member variables in this new class.
 
-그렇기 때문에, 첨파일러는 힙에 모든 것을 유지시킨다. 이것은 당신의 람다 표현식의 내용을 포함하는 함수와 함께 새로운 클래스를 만든다. 변수는 새로운 클래스에서 멤버 변수가 되어 당신의 표현식에서 참조된다.
+그렇기 때문에, 첨파일러는 힙에 모든 것을 유지시킨다. 컴파일러는 당신의 람다 표현식의 내용을 포함하는 함수와 함께 새로운 클래스를 만든다. 변수는 새로운 클래스에서 멤버 변수가 되어 당신의 표현식에서 참조된다.
 
 Your original code is then re-written to call this new method, safe in the knowledge that the the variables it uses will be there - kept alive in the new class.
 
