@@ -34,7 +34,8 @@ You use the same basic coding patterns to query and transform data in XML docume
 ## Three Parts of a Query Operation (쿼리 명령의 세 파트)
 
 All LINQ query operations consist of three distinct actions:  
-모든 LINQ 쿼리 명령은 세가지 다른 액션으로 구성된다
+
+모든 LINQ 쿼리 명령은 세가지 다른 액션으로 구성된다  
 
 Obtain the data source.
 
@@ -51,6 +52,7 @@ Execute the query.
 The following example shows how the three parts of a query operation are expressed in source code. The example uses an integer array as a data source for convenience; however, the same concepts apply to other data sources also. This example is referred to throughout the rest of this topic.
 
 다음 예제는 어떻게 쿼리 명령의 세 파트가 소스 코드에서 표현되는지 보여준다. 예제는 간단한 정수 배열을 사용하지만, 같은 컨셉은 다른 데이터 소스 또한 적용된다. 이 예제는 이 토픽의 나머지를 통해서 참조된다.(?)
+
 
     class IntroToLINQ
     {
@@ -76,7 +78,9 @@ The following example shows how the three parts of a query operation are express
     }
 
 The following illustration shows the complete query operation. In LINQ, the execution of the query is distinct from the query itself. In other words, you have not retrieved any data just by creating a query variable.  
-다음 그림은 쿼리 명령의 수행을 보여준다. LINQ에서, 쿼리의 실행은 쿼리 자체와 다르다. 다른 말로, 당신은 쿼리 변수를 생성하기만으로는 어떠한 데이터도 검색할 수 없다.
+
+다음 그림은 쿼리 명령의 수행을 보여준다. LINQ에서, 쿼리의 실행은 쿼리 자체와 다르다. 다른 말로, 당신은 쿼리 변수를 생성하기만으로는 어떠한 데이터도 검색할 수 없다.  
+
 
 ![쿼리수행](https://docs.microsoft.com/ko-kr/dotnet/csharp/programming-guide/concepts/linq/media/introduction-to-linq-queries/linq-query-complete-operation.png)
 
@@ -87,11 +91,13 @@ In the previous example, because the data source is an array, it implicitly supp
 이전 예제에서, 데이터 소스가 배열이기 떄문에, 일반적인 IEnumerable<T>를 명시적으로 사용했다. 이것은 LINQ에 IEnumberable이 요구된다는 것을 의미한다. 쿼리는 foreach 명령에서 실행되고, foreach는 IEnumerable 혹은 IEnumerable<T>를 요구한다. IEnumerable<T> 혹은 인터페이스를 상속받은 각각 일반적인 IQueryable<T>같은 타입은 queryable한 타입이라 불려진다.
 
 A queryable type requires no modification or special treatment to serve as a LINQ data source. If the source data is not already in memory as a queryable type, the LINQ provider must represent it as such. For example, LINQ to XML loads an XML document into a queryable XElement type:  
+
 queryable한 타입은  수정불가능하거나 LINQ 데이터 소스같은 serve한 특별한 teratment를 요구한다. 만약 소스 데이터가 queryable한 타입의 메모리안에 준비되지 않다면, LINQ 제공자는 반드시 중단한다. 예를들어, LINQ to XML는 queryable한 XElement형식으로 XML 문서를 로드한다.
 
     // Create a data source from an XML document.
     // using System.Xml.Linq;
     XElement contacts = XElement.Load(@"c:\myContactList.xml");
 
-With LINQ to SQL, you first create an object-relational mapping at design time either manually or by using the LINQ to SQL Tools in Visual Studio. You write your queries against the objects, and at run-time LINQ to SQL handles the communication with the database. In the following example, Customers represents a specific table in the database, and the type of the query result, IQueryable<T>, derives from IEnumerable<T>.  
+With LINQ to SQL, you first create an object-relational mapping at design time either manually or by using the LINQ to SQL Tools in Visual Studio. You write your queries against the objects, and at run-time LINQ to SQL handles the communication with the database. In the following example, Customers represents a specific table in the database, and the type of the query result, IQueryable<T>, derives from IEnumerable<T>.    
+    
 LINQ to SQL을 사용하여 당신은 먼저 수동 혹은 비쥬얼 스튜디오에서 LINQ to SQL Tools를 사용하여 디자인 타임에서 객체 관계 매핑을 만든다. 당신은 개체에대해 쿼리를 작성하고, 런타임에 LINQ to SQL 핸들이 데이터베이스와 대화한다. 다음 예제에서, Customers는 데이터베이스에서 특정 테이블과 쿼리 결과의 IQueryable<T>, IEnumerable<T>를 상속받은 타입들을 나타낸다.
