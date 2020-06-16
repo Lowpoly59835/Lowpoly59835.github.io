@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "Introduction to LINQ Queries (C#) (1) 번역"
+author: "로우폴리"
+comments: false
+---
+
 단순히 영어에 익숙해져야겠다 싶어서 내가 공부했던 것들중에서 기본적인 사항들을 정리해놓은 글들을 번역하는 중임
 이번 글은 MS Docs에 있는 [Linq 쿼리 소개](https://docs.microsoft.com/ko-kr/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)를 번역해보았음
 정보 전달은 링크에 번역이 되어있으니 거길 보는걸 추천함
