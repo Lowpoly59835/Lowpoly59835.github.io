@@ -94,3 +94,8 @@ To force immediate execution of any query and cache its results, you can call th
 You can also force execution by putting the foreach loop immediately after the query expression. However, by calling ToList or ToArray you also cache all the data in a single collection object.
 
 당신은 쿼리 표현식 이후에 바로 foreach 반복을 실행할 수 있다. 하지만, ToList 혹은 ToArray를 호출하여 당신은 하나의 콜렉션 객체에 모든 데이터를 캐시했다.
+
+
+------------------------------------
+
+다음글은 이전의 Lambda를 디스어셈블리해서 확인한 것처럼 LINQ 또한 디스어셈블로 확인하는 글을 쓰고 마치고자한다.
