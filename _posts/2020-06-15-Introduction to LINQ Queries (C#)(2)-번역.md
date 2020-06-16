@@ -34,7 +34,8 @@ The query in the previous example returns all the even numbers from the integer 
 
  참고
 
-Queries can also be expressed by using method syntax. For more information, see Query Syntax and Method Syntax in LINQ.
+Queries can also be expressed by using method syntax. For more information, see Query Syntax and Method Syntax in LINQ.  
+
 쿼리가 또한 메소드 문맥을 사용함으로서 표현된다. 더 많은 정보를 알고싶다면, [LINQ에서 쿼리 문맥과 함수 문맥](https://docs.microsoft.com/ko-kr/dotnet/csharp/programming-guide/concepts/linq/query-syntax-and-method-syntax-in-linq)을 보라
 
 ## Query Execution (쿼리 실행)
